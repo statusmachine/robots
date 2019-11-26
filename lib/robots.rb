@@ -14,7 +14,7 @@ class Robots
       
       io = Robots.get_robots_txt(uri, user_agent)
       
-      if !io || io.content_type != "text/plain" || io.status != ["200", "OK"]
+      if !io || io.content_type != "text/plain" || io.status.first.to_i != 200
         io = StringIO.new("User-agent: *\nAllow: /\n")
       end
 

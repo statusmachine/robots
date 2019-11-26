@@ -40,7 +40,11 @@ end
 
 task :default => :test
 
-require 'rake/rdoctask'
+begin
+  require 'rake/rdoctask'
+rescue LoadError
+  require 'rdoc/task'
+end
 Rake::RDocTask.new do |rdoc|
   if File.exist?('VERSION')
     version = File.read('VERSION')
